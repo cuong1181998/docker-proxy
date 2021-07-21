@@ -1,0 +1,13 @@
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name local-xinhxinh.live;
+  # FRONTEND LOCAL
+  location    /             {     proxy_pass {{ip}};  }
+  # BACKEND DEVELOPMENT
+  location    /api/v1             {     proxy_pass https://dev.xinhxinh.live/api/v1;  }
+
+  # BACKEND LOCAL
+  location    /api/v1/marketing             {     proxy_pass {{ip}};  }
+}
