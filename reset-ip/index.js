@@ -1,6 +1,7 @@
 const { networkInterfaces} = require('os')
 const Mustache = require('mustache');
 const fs = require('fs');
+const path = require("path");
 
 const getIpAddress = () => {
   const nets = networkInterfaces();
@@ -28,16 +29,17 @@ const template = `server {
 
   server_name local-xinhxinh.live;
   # FRONTEND LOCAL
-  location    /             {     proxy_pass {{ip}};  }
+  location    /             {     proxy_pass http://{{ip}}:3000;  }
   # BACKEND DEVELOPMENT
   location    /api/v1             {     proxy_pass https://dev.xinhxinh.live/api/v1;  }
 
   # BACKEND LOCAL
-  location    /api/v1/marketing             {     proxy_pass {{ip}};  }
+  location    /api/v1/marketing             {     proxy_pass http://{{ip}}:18900;  }
 }`
 
 const output = Mustache.render(template, { ip: getIpAddress()});
-fs.writeFile("../nginx/default.conf", output, (error) => {
+
+fs.writeFile(path.join(__dirname, "../nginx/default.conf"), output, (error) => {
   if (error) {
     console.log(error);
   };

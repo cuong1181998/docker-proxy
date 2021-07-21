@@ -1,0 +1,25 @@
+{
+  "name": "docker-proxy-scp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node reset-ip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuong1181998/docker-proxy-scp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuong1181998/docker-proxy-scp/issues"
+  },
+  "homepage": "https://github.com/cuong1181998/docker-proxy-scp#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "mustache": "^4.2.0"
+  }
+}
